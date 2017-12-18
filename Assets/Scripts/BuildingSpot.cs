@@ -22,7 +22,7 @@ public class BuildingSpot : MonoBehaviour {
 
             sm.money -= bm.selectedTower.GetComponent<Tower>().cost;
             //FIXME: Right now we assume that we are an object nested in a parent.
-            Instantiate(bm.selectedTower, new Vector3(transform.parent.position.x, transform.parent.position.y +2, transform.parent.position.z), transform.parent.rotation);
+            Instantiate(bm.selectedTower, new Vector3(transform.parent.position.x, transform.parent.position.y +4, transform.parent.position.z), transform.parent.rotation);
             Destroy(transform.parent.gameObject);
         }
     }

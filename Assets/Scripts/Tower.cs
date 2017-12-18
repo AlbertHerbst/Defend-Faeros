@@ -9,6 +9,7 @@ public class Tower : MonoBehaviour {
 
     public float range = 10f;
     public GameObject bulletPrefab;
+    public GameObject bulletSpawn;
 
     public int cost = 5;
 
@@ -63,7 +64,7 @@ public class Tower : MonoBehaviour {
     void ShootAt(Enemy e) {
        
         //TODO: Adjust firing position
-        GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, this.transform.localPosition, this.transform.rotation);
+        GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
 
         Bullet b = bulletGO.GetComponent<Bullet>();
         b.target = e.transform;
