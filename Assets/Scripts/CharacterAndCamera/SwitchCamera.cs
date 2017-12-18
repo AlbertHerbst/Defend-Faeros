@@ -8,14 +8,14 @@ public class SwitchCamera : MonoBehaviour {
     public characterController charControl;
     public CameraController camControl;
     public camMouseLook camMouseLook;
-    bool mouseVisible;
+    bool lockMouse;
    
 
 
 	// Use this for initialization
 	void Start () {
         Cursor.visible = true;
-        mouseVisible = true;
+        lockMouse = true;
         FPScam.enabled = false;
         camMouseLook.enabled = false;       
         charControl.enabled = false;
@@ -34,6 +34,18 @@ public class SwitchCamera : MonoBehaviour {
             FPScam.enabled = !FPScam.enabled;
             camMouseLook.enabled = !camMouseLook.enabled;
             charControl.enabled = !charControl.enabled;
+            if (lockMouse)
+            {
+                Debug.Log("Mouse Locked");
+                Cursor.lockState = CursorLockMode.Locked;
+                lockMouse = false;
+            }
+            else
+            {
+                Debug.Log("Mouse Unlocked");
+                Cursor.lockState = CursorLockMode.None;
+                lockMouse = true;
+            }
 
             Cursor.visible = !Cursor.visible;
 

@@ -2935,6 +2935,15 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 555337437}
+    - target: {fileID: 1616754699682040, guid: 13792e6427b4de64887f83ec0d9ce211, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 223985855165698608, guid: 13792e6427b4de64887f83ec0d9ce211,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 13792e6427b4de64887f83ec0d9ce211, type: 2}
   m_IsPrefabParent: 0
@@ -4111,6 +4120,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 681b2a00363cc544a8553248cdada949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waves:
+  - name: 
+    enemy: {fileID: 0}
+    count: 0
+    spawnRate: 0
+  - name: 
+    enemy: {fileID: 0}
+    count: 0
+    spawnRate: 0
+  - name: 
+    enemy: {fileID: 0}
+    count: 0
+    spawnRate: 0
+  timeBetweenWaves: 5
+  waveCountdown: 0
   difficultyMultiplier: 1.1
   wave: 0
   waveText: {fileID: 1857175907}
@@ -4828,7 +4852,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4454173571487286, guid: 1c82a646ffaa91e4898fac5f23a81705, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1.5317192
+      value: -16.94
       objectReference: {fileID: 0}
     - target: {fileID: 4454173571487286, guid: 1c82a646ffaa91e4898fac5f23a81705, type: 2}
       propertyPath: m_LocalPosition.y
@@ -4836,7 +4860,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4454173571487286, guid: 1c82a646ffaa91e4898fac5f23a81705, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 105.05407
+      value: 110.93
       objectReference: {fileID: 0}
     - target: {fileID: 4454173571487286, guid: 1c82a646ffaa91e4898fac5f23a81705, type: 2}
       propertyPath: m_LocalRotation.x
