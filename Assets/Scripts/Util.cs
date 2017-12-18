@@ -5,7 +5,7 @@ using UnityEngine;
 public class Util : MonoBehaviour {
 
 
-    public bool lockmouse = true;
+   
     public Canvas GUI;
    
 
@@ -16,6 +16,7 @@ public class Util : MonoBehaviour {
         GUI.enabled = true;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = true;
+
     }
 	
 	// Update is called once per frame

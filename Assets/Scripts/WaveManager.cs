@@ -1,11 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WaveManager : MonoBehaviour {
 
+    public float difficultyMultiplier, wave;
+    public Text waveText;
+
+
 	// Use this for initialization
 	void Start () {
+        wave = 1f;
+        waveText.text = "Wave: " + wave;
+       
 		
 	}
 	
@@ -13,6 +21,7 @@ public class WaveManager : MonoBehaviour {
 	void Update () {
 		
 	}
+
 
     /*System.Timers.Timer LeTimer;
 int BoomDown = 100;
