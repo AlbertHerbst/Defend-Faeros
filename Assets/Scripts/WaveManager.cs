@@ -64,6 +64,12 @@ public class WaveManager : MonoBehaviour {
 
         //Spawnshit
 
+        for (int i = 0; i < _wave.count; i++)
+        {
+
+        }
+
+
         state = SpawnState.WAITING;
 
         yield break;
