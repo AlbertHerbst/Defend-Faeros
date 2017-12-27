@@ -11,13 +11,19 @@ public class Enemy : MonoBehaviour {
     public float health = 1f;
     public float speed = 5f;
 
+
     public int moneyValue = 1;
 
 	// Use this for initialization
 	void Start () {
         pathGO = GameObject.Find("Path");
+       
+        
+            health = health * Mathf.Pow(GameObject.FindObjectOfType<WaveManager>().difficultyMultiplier, GameObject.FindObjectOfType<WaveManager>().wave);
+        
+        
 	}
-//quw
+
     void GetNextPathNode()
     {
         if (pathNodeIndex < pathGO.transform.childCount)
