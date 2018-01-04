@@ -6,6 +6,7 @@ TagManager:
   tags:
   - TowerSlot
   - Enemy
+  - delete
   layers:
   - Default
   - TransparentFX

@@ -34,8 +34,10 @@ public class SwitchCamera : MonoBehaviour {
             FPScam.enabled = !FPScam.enabled;
             camMouseLook.enabled = !camMouseLook.enabled;
             charControl.enabled = !charControl.enabled;
+
             if (lockMouse)
             {
+                camMouseLook.enabled = true;
                 Debug.Log("Mouse Locked");
                 Cursor.lockState = CursorLockMode.Locked;
                 lockMouse = false;
@@ -47,7 +49,7 @@ public class SwitchCamera : MonoBehaviour {
                 lockMouse = true;
             }
 
-            Cursor.visible = !Cursor.visible;
+            //Cursor.visible = !Cursor.visible;
 
             TopDownCam.enabled = !TopDownCam.enabled;
             camControl.enabled = !camControl.enabled;      

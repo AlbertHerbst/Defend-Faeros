@@ -89,7 +89,7 @@ public class WaveManager : MonoBehaviour {
         }
         wave++;
         nextWave++;
-        waveText.text = "Wave: " + (nextWave + 1);
+        waveText.text = "Wave: " + (wave);
 
 
     }

@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour {
         pathGO = GameObject.Find("Path");
        
         
-            health = health * Mathf.Pow(GameObject.FindObjectOfType<WaveManager>().difficultyMultiplier, GameObject.FindObjectOfType<WaveManager>().wave);
+            health = health * Mathf.Pow(GameObject.FindObjectOfType<WaveManager>().difficultyMultiplier, GameObject.FindObjectOfType<WaveManager>().wave - 1);
         
         
 	}
