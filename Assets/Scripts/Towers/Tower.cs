@@ -5,8 +5,8 @@ using UnityEngine;
 public class Tower : MonoBehaviour {
 
 
-    Transform turretTransform;
-
+    Transform rotY, rotX; //Parts of the turret that rotate in the X and Y planes
+    public float rotationSpeed;
     public float range = 10f;
     public GameObject bulletPrefab;
     public GameObject bulletSpawn;
@@ -21,7 +21,10 @@ public class Tower : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        turretTransform = transform.Find("Turret");
+        rotY = transform.Find("RotateY");
+        rotX = transform.Find("RotateX");
+        
+
 	}
 	
 	// Update is called once per frame
@@ -51,7 +54,15 @@ public class Tower : MonoBehaviour {
 
         Vector3 dir = nearestEnemy.transform.position - this.transform.position;
         Quaternion lookRot = Quaternion.LookRotation( dir );
-        turretTransform.rotation = Quaternion.Euler(0, lookRot.eulerAngles.y, 0);
+
+        Quaternion fromY = rotY.rotation;
+        Quaternion fromX = rotX.rotation;
+
+        Quaternion toY = Quaternion.Euler(0f, lookRot.eulerAngles.y, 0f);
+        Quaternion toX = Quaternion.Euler(lookRot.eulerAngles.x, lookRot.eulerAngles.y, -90f);
+
+        rotY.rotation = Quaternion.Lerp(rotY.rotation, toY, rotationSpeed * Time.deltaTime);
+        rotX.rotation = Quaternion.Lerp(rotX.rotation, toX, rotationSpeed * Time.deltaTime);
 
         fireCooldownLeft -= Time.deltaTime;
         if (fireCooldownLeft <= 0 && dir.magnitude <= range)
@@ -63,10 +74,10 @@ public class Tower : MonoBehaviour {
 
     void ShootAt(Enemy e) {
        
-        //TODO: Adjust firing position
+       
         GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
 
-        Bullet b = bulletGO.GetComponent<Bullet>();
+        GatlingBullet_Tower b = bulletGO.GetComponent<GatlingBullet_Tower>();
         b.target = e.transform;
         b.damage = damage;
         b.radius = radius;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour {
+public class GatlingBullet_Weapon : MonoBehaviour {
 
     public float speed = 15f;
     public Transform target;
