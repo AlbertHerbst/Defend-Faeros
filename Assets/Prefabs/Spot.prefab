@@ -137,3 +137,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   preview: {fileID: 1513227949034386, guid: 2d89e511b68ba4d43be1f28a26e5a35e, type: 2}
+  hasTower: 0

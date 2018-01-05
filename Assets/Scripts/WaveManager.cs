@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
+
 
 public class WaveManager : MonoBehaviour {
 
@@ -26,7 +27,7 @@ public class WaveManager : MonoBehaviour {
     private float searchCountDown = 1f;
 
     public float difficultyMultiplier, wave;
-    public Text waveText;
+    public TextMeshProUGUI waveText;
 
     private SpawnState state = SpawnState.COUNTING;
 

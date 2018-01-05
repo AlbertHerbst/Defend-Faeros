@@ -10,6 +10,7 @@ public class Tower : MonoBehaviour {
     public float range = 10f;
     public GameObject bulletPrefab;
     public GameObject bulletSpawn;
+    public barrelRotation br;
 
     public int cost = 5;
 
@@ -51,18 +52,34 @@ public class Tower : MonoBehaviour {
             return;
         }
 
-
+        
         Vector3 dir = nearestEnemy.transform.position - this.transform.position;
         Quaternion lookRot = Quaternion.LookRotation( dir );
+        if (dir.magnitude <= range)
+        {
+            if (br != null)
+            {
+                br.rotating = true;
+            }
+          
 
-        Quaternion fromY = rotY.rotation;
-        Quaternion fromX = rotX.rotation;
+            Quaternion fromY = rotY.rotation;
+            Quaternion fromX = rotX.rotation;
 
-        Quaternion toY = Quaternion.Euler(0f, lookRot.eulerAngles.y, 0f);
-        Quaternion toX = Quaternion.Euler(lookRot.eulerAngles.x, lookRot.eulerAngles.y, -90f);
+            Quaternion toY = Quaternion.Euler(0f, lookRot.eulerAngles.y, 0f);
+            Quaternion toX = Quaternion.Euler(lookRot.eulerAngles.x, lookRot.eulerAngles.y, -90f);
 
-        rotY.rotation = Quaternion.Lerp(rotY.rotation, toY, rotationSpeed * Time.deltaTime);
-        rotX.rotation = Quaternion.Lerp(rotX.rotation, toX, rotationSpeed * Time.deltaTime);
+            rotY.rotation = Quaternion.Lerp(rotY.rotation, toY, rotationSpeed * Time.deltaTime);
+            rotX.rotation = Quaternion.Lerp(rotX.rotation, toX, rotationSpeed * Time.deltaTime);
+        }
+        else
+        {
+            if (br != null)
+            {
+                br.rotating = false;
+            }
+            
+        }
 
         fireCooldownLeft -= Time.deltaTime;
         if (fireCooldownLeft <= 0 && dir.magnitude <= range)

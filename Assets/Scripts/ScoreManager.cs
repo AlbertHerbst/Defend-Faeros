@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 
 //The ScoreManager takes care of all the value management in the game. (Currently money and lives)
@@ -12,9 +13,9 @@ public class ScoreManager : MonoBehaviour {
 
     public int money = 100;
 
-    public Text moneyText;
+    public TextMeshProUGUI moneyText;
 
-    public Text livesText;
+    public TextMeshProUGUI livesText;
 
 
 	public void LooseLife(int l = 1)

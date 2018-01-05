@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class BuildingSpot : MonoBehaviour {
 
-    public GameObject preview;
+    BuildingManager bm;
+
+    private void Start()
+    {
+        bm = GameObject.FindObjectOfType<BuildingManager>();
+    }
+    public bool hasTower = false;
 
     //TODO: Make it so this can place resource generators *ON DESIGNATED SPOTS*
     void OnMouseUp()
@@ -12,23 +18,25 @@ public class BuildingSpot : MonoBehaviour {
 
         Debug.Log("BuildingSpot Clicked.");
 
-        BuildingManager bm = GameObject.FindObjectOfType<BuildingManager>();
-        if (bm.selectedTower != null)
+       
+
+        if (bm.tower >= 0 && !hasTower)
         {
 
             ScoreManager sm = GameObject.FindObjectOfType<ScoreManager>();
-            if (sm.money < bm.selectedTower.GetComponent<Tower>().cost)
+            if (sm.money < bm.towers[bm.tower].GetComponent<Tower>().cost)
             {
                 Debug.Log("You're too poor.");
                 return;
             }
 
-            sm.money -= bm.selectedTower.GetComponent<Tower>().cost;
+            sm.money -= bm.towers[bm.tower].GetComponent<Tower>().cost;
             //FIXME: Right now we assume that we are an object nested in a parent.
-            Instantiate(bm.selectedTower, new Vector3(transform.parent.position.x, transform.parent.position.y, transform.parent.position.z), transform.parent.rotation);
+            GameObject tower = Instantiate(bm.towers[bm.tower], new Vector3(transform.position.x, transform.position.y + 0.16f, transform.position.z), transform.rotation);
+            tower.transform.parent = this.transform;
             Destroy(GameObject.FindGameObjectWithTag("delete"));
             deletePreviews();
-            Destroy(transform.parent.gameObject);
+            hasTower = true;
         }   
 
 
@@ -36,7 +44,11 @@ public class BuildingSpot : MonoBehaviour {
 
     void OnMouseEnter()
     {
-        Instantiate(preview, new Vector3(transform.position.x, transform.position.y + 4, transform.position.z), transform.rotation);
+        if (bm.tower >= 0)
+        {
+            Instantiate(bm.previews[bm.tower], new Vector3(transform.position.x, transform.position.y + 0.16f, transform.position.z), transform.rotation);
+        }
+       
     }
 
     void OnMouseExit()

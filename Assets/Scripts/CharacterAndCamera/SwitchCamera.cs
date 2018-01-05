@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class SwitchCamera : MonoBehaviour {
 
     public Camera FPScam, TopDownCam;
@@ -9,7 +10,7 @@ public class SwitchCamera : MonoBehaviour {
     public CameraController camControl;
     public camMouseLook camMouseLook;
     bool lockMouse;
-   
+    public RectTransform waves;
 
 
 	// Use this for initialization
@@ -41,12 +42,16 @@ public class SwitchCamera : MonoBehaviour {
                 Debug.Log("Mouse Locked");
                 Cursor.lockState = CursorLockMode.Locked;
                 lockMouse = false;
+                //waves.Rotate(new Vector3(0f, 90f, 0f));
+                waves.rotation = new Quaternion(0f, 90f, 0f, 0f);
             }
             else
             {
                 Debug.Log("Mouse Unlocked");
                 Cursor.lockState = CursorLockMode.None;
                 lockMouse = true;
+                //waves.Rotate(new Vector3(0f, -90f, 0f), Space.World );
+                waves.rotation =  new Quaternion(20f, 0f, 0f, 0f);
             }
 
             //Cursor.visible = !Cursor.visible;
