@@ -19,7 +19,7 @@ public class UIManager : MonoBehaviour {
     void Update () {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (active)
+            if (weaponsandtowers.activeSelf)
             {
                 weaponsandtowers.SetActive(false);
                 active = false;

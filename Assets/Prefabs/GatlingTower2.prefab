@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4495577807374376}
   - component: {fileID: 114743194356244428}
+  - component: {fileID: 114146857841390402}
   m_Layer: 0
   m_Name: GatlingTower2
   m_TagString: Untagged
@@ -132,8 +133,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1446890111980496}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 41.2948, y: 10.018366, z: -51.329754}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalPosition: {x: 43.994, y: 6.16, z: -4.37}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 4423360865502882}
   - {fileID: 4751587042151312}
@@ -326,6 +327,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.30000004, y: 0.5000001, z: 1.8081974}
   m_Center: {x: 0.00000047683716, y: -1.6155871e-27, z: 0.7540987}
+--- !u!114 &114146857841390402
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1446890111980496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfd12f0ca92235c48921186c871b12a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yPos: 0
 --- !u!114 &114633385323453988
 MonoBehaviour:
   m_ObjectHideFlags: 1

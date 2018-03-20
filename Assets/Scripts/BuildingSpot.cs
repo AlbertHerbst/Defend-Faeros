@@ -32,7 +32,7 @@ public class BuildingSpot : MonoBehaviour {
 
             sm.money -= bm.towers[bm.tower].GetComponent<Tower>().cost;
             //FIXME: Right now we assume that we are an object nested in a parent.
-            GameObject tower = Instantiate(bm.towers[bm.tower], new Vector3(transform.position.x, transform.position.y + 0.16f, transform.position.z), transform.rotation);
+            GameObject tower = Instantiate(bm.towers[bm.tower], new Vector3(transform.position.x, transform.position.y - 4, transform.position.z), transform.rotation);
             tower.transform.parent = this.transform;
             Destroy(GameObject.FindGameObjectWithTag("delete"));
             deletePreviews();

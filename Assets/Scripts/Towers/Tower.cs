@@ -11,6 +11,7 @@ public class Tower : MonoBehaviour {
     public GameObject bulletPrefab;
     public GameObject bulletSpawn;
     public barrelRotation br;
+    lerpToPosition lerptopos;
 
     public int cost = 5;
 
@@ -24,7 +25,8 @@ public class Tower : MonoBehaviour {
 	void Start () {
         rotY = transform.Find("RotateY");
         rotX = transform.Find("RotateX");
-        
+        lerptopos = GetComponent<lerpToPosition>();
+        lerptopos.yPos = transform.position.y + 4.16f;
 
 	}
 	

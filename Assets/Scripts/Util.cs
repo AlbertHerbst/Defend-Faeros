@@ -13,7 +13,7 @@ public class Util : MonoBehaviour {
 	void Start () {
        
         
-        GUI.enabled = true;
+       GUI.enabled = true;
        Cursor.lockState = CursorLockMode.None;
        // Cursor.visible = true;
 

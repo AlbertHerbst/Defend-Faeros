@@ -8,14 +8,15 @@ public class cameraFocus : MonoBehaviour {
 
     void Start()
     {
-        //transform.Rotate( 180,0,0 );
+        cameraToLookAt = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
 
     void Update()
     {
+
         Vector3 v = cameraToLookAt.transform.position - transform.position;
         v.x = v.z = 0.0f;
         transform.LookAt(cameraToLookAt.transform.position - v);
-        transform.Rotate(-20, 180, 0);
+        transform.Rotate(0, 180, 0);
     }
 }

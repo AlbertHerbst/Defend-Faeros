@@ -9,11 +9,11 @@ public class camMouseLook : MonoBehaviour {
     public float sensitivity = 5f;
     public float smoothing = 2f;
 
-    GameObject character;
+    public GameObject character;
 
 	// Use this for initialization
 	void Start () {
-        character = this.transform.parent.gameObject;
+       // character = this.transform.parent.gameObject;
 	}
 	
 	// Update is called once per frame

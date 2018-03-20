@@ -5,21 +5,27 @@ using UnityEngine;
 public class Enemy : MonoBehaviour {
 
     GameObject pathGO;
+    Animator anim;
 
     Transform targetPathNode;
     int pathNodeIndex = 0;
     public float health = 1f;
     public float speed = 5f;
-
+    float waitUntilDestroy = 4.6f;
+    bool die = false;
 
     public int moneyValue = 1;
 
 	// Use this for initialization
 	void Start () {
         pathGO = GameObject.Find("Path");
-       
-        
+        anim = GameObject.FindObjectOfType<Animator>();
+
+        if ((GameObject.FindObjectOfType<WaveManager>()))
+        {
             health = health * Mathf.Pow(GameObject.FindObjectOfType<WaveManager>().difficultyMultiplier, GameObject.FindObjectOfType<WaveManager>().wave - 1);
+        }
+           
         
         
 	}
@@ -41,7 +47,25 @@ public class Enemy : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (targetPathNode == null)
+        if (die)
+        {
+            gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+
+            if (waitUntilDestroy <= 1)
+            {
+                gameObject.GetComponent<Collider>().enabled = false;
+            }
+            if (waitUntilDestroy <= 0)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                waitUntilDestroy -= Time.deltaTime;
+            }
+        }
+       
+        if (targetPathNode == null)
         {
             GetNextPathNode();
             if(targetPathNode == null)
@@ -49,9 +73,9 @@ public class Enemy : MonoBehaviour {
                 //Shit fam there ain't no more path
             }
         }
+        Vector3 targetposition = new Vector3(targetPathNode.position.x, gameObject.transform.position.y, targetPathNode.position.z);
 
-
-        Vector3 dir = targetPathNode.position - this.transform.localPosition;
+        Vector3 dir = targetposition - this.transform.localPosition;
 
         float distThisFrame = speed * Time.deltaTime;
 
@@ -61,19 +85,26 @@ public class Enemy : MonoBehaviour {
             targetPathNode = null;
         }
         else
-        {    
+        {
             //TODO: COnsider ways to smooth this motion
 
             //Move towards the node
-            transform.Translate(dir.normalized * distThisFrame, Space.World);
-            Quaternion targetRotation = Quaternion.LookRotation(dir);
-            this.transform.rotation = Quaternion.Lerp(this.transform.rotation, targetRotation, Time.deltaTime * 5);
+            if (!die)
+            {
+                transform.Translate(dir.normalized * distThisFrame, Space.World);
+                Quaternion targetRotation = Quaternion.LookRotation(dir);
+                this.transform.rotation = Quaternion.Lerp(this.transform.rotation, targetRotation, Time.deltaTime * 5);
+            }
+            
         }
 	}
 
     void ReachedGoal()
     {
-        GameObject.FindObjectOfType<ScoreManager>().LooseLife();
+        if (GameObject.FindObjectOfType<ScoreManager>())
+        {
+            GameObject.FindObjectOfType<ScoreManager>().LooseLife();
+        }
         Destroy(gameObject);
     }
 
@@ -89,8 +120,15 @@ public class Enemy : MonoBehaviour {
     public void Die()
     {
         //TODO: DO This more safely(?)
-        GameObject.FindObjectOfType<ScoreManager>().money += moneyValue;
-        Destroy(gameObject);
+        if (GameObject.FindObjectOfType<ScoreManager>())
+        {
+            GameObject.FindObjectOfType<ScoreManager>().money += moneyValue;
+        }
+        anim.SetBool("Die", true);
+        die = true;
+        
+
+        
     }
 }
 
