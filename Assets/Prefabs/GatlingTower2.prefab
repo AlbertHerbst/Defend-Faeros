@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4495577807374376}
   - component: {fileID: 114743194356244428}
   - component: {fileID: 114146857841390402}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: GatlingTower2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 33359563528751550}
   - component: {fileID: 23415163104317474}
   - component: {fileID: 114633385323453988}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RotateBarrels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 33288277743594536}
   - component: {fileID: 23616833926098108}
   - component: {fileID: 65697971748568318}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RotateX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4583174721311522}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BulletSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 23124422157083602}
   - component: {fileID: 65671408555657852}
   - component: {fileID: 65635929492667274}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RotateY
   m_TagString: Untagged
   m_Icon: {fileID: 0}
