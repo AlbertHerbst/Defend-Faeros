@@ -32,4 +32,11 @@ public class Util : MonoBehaviour {
         }
         
     }
+
+    public void QuitGame()
+    {
+        Debug.Log("Quit");
+        Application.Quit();
+
+    }
 }
